@@ -47,6 +47,8 @@ class ViewController02: UIViewController {
     
     public func register(){
         
+        
+        
     }
     
     
