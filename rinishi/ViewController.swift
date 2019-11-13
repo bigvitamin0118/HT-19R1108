@@ -16,12 +16,28 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
    
-        let yourName = tfUserName.text
-        let yourPass = tfPassWord.text
-
     }
     
     @IBAction func login(_ sender: Any) {
+        let userName = tfUserName.text
+        let userPass = tfPassWord.text
+       
+        if userName == "" || userPass == "" {
+            
+        }
+        
+        
     }
+    
+    func displayMyAlertMessage(userMessage: String) {
+        
+        let myAleat = UIAlertController(title: "Aleat", message: userMessage, preferredStyle: UIAlertController.Style.alert)
+        
+        myAleat.addAction(UIAlertAction(title: "OK", style: .default,
+            handler: nil))
+        present(myAleat, animated: true)
+        
+    }
+    
 }
 
