@@ -63,6 +63,8 @@ class ViewController02: UIViewController {
     
     public func register(){
         
+        
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
