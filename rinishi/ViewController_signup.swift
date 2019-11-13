@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import SQLite3
 
 class ViewController02: UIViewController {
 
+    var db: OpaquePointer?
+    var dbfile: String = "sample.db"
+    
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPassField: UITextField!
@@ -35,6 +39,18 @@ class ViewController02: UIViewController {
     
     public func dbAccess(){
         
+        
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(self.dbfile)
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("Error: database file open error.")
+        }
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS foobar (id INTEGER PRIMARY KEY AUTOINCREMENT, guid TEXT)", nil, nil, nil) != SQLITE_OK {
+                   print("Error: SQL execution error.")
+               }
+        
+        
+        
+        
     }
     
     public func hasSameUser(name:String,password : String)->Bool{
@@ -50,7 +66,9 @@ class ViewController02: UIViewController {
         
         
     }
-    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
     /*
     // MARK: - Navigation
